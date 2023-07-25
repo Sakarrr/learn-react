@@ -6,34 +6,19 @@ import ContactAdder from "./components/ContactAdder";
 
 const App = () => {
 
-  const initialContacts = [ {
-    name:"John",
-    number:123123123123,
-    location: "Ktm",
-  }, 
-  {
-    name:"Krish",
-    number:123123123123,
-    location: "Btl",
-  }, 
-  {
-    name:"Dave",
-    number:123123123123,
-    location: "Jpn",
-  }, 
-  {
-    name:"Krish",
-    number:123123123123,
-    location: "Chn",
-  }, 
-]
+  const getContacts  = JSON.parse(localStorage.getItem("contacts") );
 
-  const [contacts, setContacts] = useState( initialContacts );
+  const [contacts, setContacts] = useState( getContacts ? getContacts : [] );
 
 const addContactData = ( props ) => {
-  setContacts( [ props, ...contacts ] );
+  const allContacts = [ props, ...contacts ] ;
+
+  setContacts( allContacts );
+
+  localStorage.setItem("contacts",JSON.stringify( allContacts ));
 
 };
+
 
   return (
     <>
@@ -45,8 +30,9 @@ const addContactData = ( props ) => {
     <div className="contact_list">
       <h3>Contact List:</h3>
       {
-        contacts.map(data => <Contact data = {data} ></Contact>) 
+        contacts.map( (data ) => <Contact key={data.id} data = {data} ></Contact>) 
       }
+
       </div>
     </>
   );

@@ -2,13 +2,13 @@ import { useState } from "react";
 
 const ContactAdder = ( props ) => {
 
-    const [name, SetName] = useState("Sakar");
-    const [number, SetNumber] = useState("1235867");
-    const [location, SetLocation] = useState("Nepal");
+    const [name, SetName] = useState("");
+    const [number, SetNumber] = useState("");
+    const [location, SetLocation] = useState("");
 
     const onClickHandler = () => {
 
-        const contactData = {name:name, number, location};
+        const contactData = { id: Math.random(), name:name, number, location};
         props.onContactAdded( contactData )    
     }
 
@@ -26,7 +26,7 @@ const ContactAdder = ( props ) => {
     <br />
     <br />
     
-    <button onClick={onClickHandler}>Click Me!</button>
+    <button onClick={onClickHandler}>Add Contact</button>
     </div>
     </>
 
