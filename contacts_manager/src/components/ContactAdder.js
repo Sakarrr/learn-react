@@ -6,16 +6,27 @@ const ContactAdder = ( props ) => {
     const [number, SetNumber] = useState("");
     const [location, SetLocation] = useState("");
 
-    const onClickHandler = () => {
+    const onFormSubmitHandler = (e) => {
+
+        e.preventDefault();
 
         const contactData = { id: Math.random(), name:name, number, location};
-        props.onContactAdded( contactData )    
+        if(name.length < 1 || number.length <1 || location.length<1){
+            alert("Please fill all the fields");
+        }else {
+            props.onContactAdded( contactData );
+            SetName("");
+            SetNumber("");
+            SetLocation("");    
+        }
+       
     }
 
 
     return( <>
     <div className="simpleAdder" >
-    Contact adder: <br />
+    <h3 > Contact adder:  </h3>
+    <form onSubmit={onFormSubmitHandler}>
 
     <input type="text" value={name} placeholder="Contact name" onChange={(e) => SetName(e.target.value)}></input>
 
@@ -26,7 +37,8 @@ const ContactAdder = ( props ) => {
     <br />
     <br />
     
-    <button onClick={onClickHandler}>Add Contact</button>
+    <button>Add Contact</button>
+    </form>
     </div>
     </>
 
