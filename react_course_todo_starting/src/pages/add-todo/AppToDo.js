@@ -1,14 +1,25 @@
 import { useRef } from "react";
 import NavBar from "../NavBar";
+import { useHistory } from "react-router-dom";
 
 const AppToDo = () => {
 
     const todoText = useRef();
 
+    const history = useHistory();
+
     const addTodo = (e) => {
         e.preventDefault();
-         
-         console.log(todoText.current.value);
+        const todoString = todoText.current.value;
+
+     
+        const initialToDo = localStorage.getItem("todo") ? JSON.parse(localStorage.getItem("todo")) : [];
+
+        initialToDo.push(todoString);
+
+        localStorage.setItem( "todo", JSON.stringify(initialToDo) );
+
+        history.push("/");
     }
     return <> 
         <NavBar />
