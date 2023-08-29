@@ -9,6 +9,8 @@ const Routes = () => {
     <Route path="/add" component={AppToDo} />
 
     <Route path="/view/:id" component={ ViewPage } exact />
+
+    {/* <Route path="/view" component={ ViewPage } exact /> */}
     </>
 }
 

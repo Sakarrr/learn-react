@@ -1,4 +1,4 @@
-import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min"
+import { useHistory, useLocation, useParams } from "react-router-dom/cjs/react-router-dom.min"
 import NavBar from "../NavBar"
 
 const ViewPage = () => {
@@ -20,7 +20,14 @@ const ViewPage = () => {
         margin: "20px",
     };
 
-    console.log(getParams);
+    const deleteTodo = () => {
+        getStorage.splice(getID, 1)
+
+        localStorage.setItem("todo", JSON.stringify(getStorage));
+        
+        history.replace("/");
+    }
+
    
     return <> 
     
@@ -31,8 +38,13 @@ const ViewPage = () => {
         <button onClick={()=> { history.push("/") }} style={{background: "#e7e7e7", color: "#666"}}>Go Back</button>
 
     <div style={cssData} >
+
         {getData}
+
     </div>
+
+        <button style={{background: "red"}}  onClick={deleteTodo}> Delete To-Do </button>
+
     </div>
    
     
