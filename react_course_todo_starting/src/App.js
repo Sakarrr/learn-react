@@ -5,11 +5,9 @@ import { BrowserRouter, Switch } from "react-router-dom";
 
 const App = () => {
   return <>
-  <BrowserRouter>
-  <Switch>
-    <Routes />
-  </Switch>
-  </BrowserRouter>
+ 
+      <Routes />
+   
   </>;
 };
 

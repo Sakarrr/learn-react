@@ -10,8 +10,11 @@ const MainPage = () => {
         <NavBar /> 
 
         <div className="todo_container">
-         <h3> Your To-Do</h3>
-         {
+         <h3> Your To-Do:</h3>
+
+         { 
+            getTodo && getTodo.length > 0 ? <>
+            {
             getTodo.map((el, index)=> <>
             
             <div className="single_todo">
@@ -26,6 +29,11 @@ const MainPage = () => {
             
             </>)
          }
+         </> :<>
+          <center> Nothing on your to do. Please <Link to="/add"> add some.</Link></center>
+         </>
+         }
+         
       
         </div>
      </>

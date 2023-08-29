@@ -7,7 +7,12 @@ const NavBar = () => {
           <div className="menu_items">
                <Link to="/" >
                     <div>Home</div>
-               </Link>     
+               </Link> 
+
+               <Link to="/login" >
+                    <div>Login</div> 
+               </Link>
+
                <Link to="/add" >
                     <div>Add To Do</div> 
                </Link>

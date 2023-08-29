@@ -1,5 +1,6 @@
-import { useHistory, useLocation, useParams } from "react-router-dom/cjs/react-router-dom.min"
+import { Link, useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min"
 import NavBar from "../NavBar"
+import AuthCheckBoolean from "../../middleware/AuthCheckBoolean";
 
 const ViewPage = () => {
 
@@ -43,7 +44,15 @@ const ViewPage = () => {
 
     </div>
 
+    {
+        AuthCheckBoolean() ? <>
         <button style={{background: "red"}}  onClick={deleteTodo}> Delete To-Do </button>
+        </> : <>
+        <p>Login to see more options <Link to="/login"> Login </Link></p>
+        </>
+    }
+
+        
 
     </div>
    
